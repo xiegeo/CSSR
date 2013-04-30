@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference android:title="Select Camera" 
+   					android:defaultValue="0" android:key="cameraId" 
+   					android:summary="">
+   	</ListPreference>
+   <CheckBoxPreference
+                    android:key="enableTTS"
+                    android:title="Enable Test To Speech"
+                    android:summaryOff = "Enable to speak out the names."
+                    android:summaryOn = "Disable to make it quiet."
+                    android:defaultValue = "false"
+                    />
+    <CheckBoxPreference
+                    android:key="pausable"
+                    android:title="Pause Camera Aggressively"
+                    android:summaryOff = "Enable to pause camera when data processing is paused."
+                    android:summaryOn = "Disable to show camera continuously."
+                    android:defaultValue = "false"
+                    />
+  	<CheckBoxPreference
+                    android:key="mirror"
+                    android:title="Recognize Mirrored Object"
+                    android:summaryOff = "Enable to recognize mirrored objects without explicit leaning.\nMirrored outlines can be alike so that a simbol made by the left hand is the same as the right, or an object can be recgnised from the opposite side."
+                    android:summaryOn = "Disable to tell the difference between left and right.\nMirrored outlines can be alike so that a simbol made by the left hand is the same as the right, or an object can be recgnised from the opposite side."
+                    android:defaultValue = "true"
+                    />
+  	<CheckBoxPreference
+                    android:key="showCSS"
+                    android:title="Show CSS Calculation"
+                    android:summary = "Show graphics related to Curvature Scale Space calculations.\n(Uses additional cpu to draw graphs.)"
+                    android:defaultValue = "false"
+                    />
+    <PreferenceScreen android:title="Advanced" android:key="advanced">
+    	<ListPreference android:title="Turtle Jump" 
+    					android:entries="@array/turtleJump" android:entryValues="@array/turtleJump" 
+    					android:defaultValue="1" android:key="turtleJump" 
+    					android:summary="Turtle area selection step size.\n(larger -&gt; faster)">
+    	</ListPreference>
+    </PreferenceScreen>
+</PreferenceScreen>

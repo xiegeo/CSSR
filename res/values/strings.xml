@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CSS Recognizer</string>
+    <color name="transparent">#0000</color>
+    <string name="links">- More resources at <a href="http://cssr.xiegeo.com/">cssr.xiegeo.com</a> including a detail tutorial. And contact: <a href="mailto:george@xiegeo.com?subject=CSSR%20User%3A">george@xiegeo.com</a> for anything.</string>
+    <string name="thanks">Professor <a href="http://www.cs.sfu.ca/people/faculty/ze-lianli.html">Ze-Nian Li</a>, for his guidance. This app started as a final project in one of his classes.</string>
+</resources>

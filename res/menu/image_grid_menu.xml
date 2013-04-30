@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/move"
+        android:alphabeticShortcut="m"
+        android:numericShortcut="1"
+        android:title="Move group"
+        android:showAsAction="ifRoom|withText">
+    </item>
+    <item
+        android:id="@+id/delete"
+        android:alphabeticShortcut="d"
+        android:numericShortcut="2"
+        android:title="Delete group"
+        android:showAsAction="ifRoom|withText">
+    </item>
+
+</menu>
