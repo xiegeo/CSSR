@@ -59,6 +59,7 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
     }
 
     public void setCamera(Camera camera) {
+    	Log.i(TAG, "set camera");
         mCamera = camera;
         if (mCamera != null) {
             mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
@@ -100,6 +101,9 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
     	
     	//Toast.makeText(Main.me, width+","+height, Toast.LENGTH_SHORT).show();
         setMeasuredDimension(width, height);
+        if(mtargetWidth == width &&  mtargetHeight == height){
+        	return;
+        }
         mtargetWidth = width;
         mtargetHeight = height;
         if (mSupportedPreviewSizes != null) {
@@ -113,7 +117,7 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
     	if (mPreviewSize == null) {
 			Log.e(TAG, "onLayout:no preview size");
 		}else{
-			Log.i(TAG, "onLayout mPreviewSize:"+mPreviewSize.width);
+			Log.i(TAG, "onLayout changed:"+changed+" mPreviewSize:"+mPreviewSize);
 		}
         if (changed && getChildCount() > 0) {
             final View child = getChildAt(0);
