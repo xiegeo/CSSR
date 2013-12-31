@@ -68,8 +68,6 @@ public class MainActivity extends Activity {
         mLayout = new RelativeLayout(this);
         mLayout.setKeepScreenOn(true);
         
-
-        
         mCallback=new CameraCallback(this){
         	public boolean onTouchEvent (MotionEvent event) {
         		if(event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -150,6 +148,7 @@ public class MainActivity extends Activity {
 		});
         params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
     	params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM );
+    	params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
     	mLayout.addView(mInforButton,params);
         
         
