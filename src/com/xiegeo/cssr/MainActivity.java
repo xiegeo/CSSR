@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.media.AudioManager;
@@ -342,7 +341,9 @@ public class MainActivity extends Activity {
     protected void onPrepareDialog(int id, Dialog dialog) {
     	switch(id) {
 	    case DIALOG_LEARN_ID:
-	    	mPreview.setPaused(true); 
+	    	if (mPreview != null) {
+	    		mPreview.setPaused(true); 
+			}
 	    	if (mCssImage != null) {
 	    		mIconImage = mCssImage.getImage(getIconSide());
 		    	mIconView.invalidate();
