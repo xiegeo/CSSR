@@ -10,12 +10,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -92,8 +94,9 @@ public class MainActivity extends Activity {
         	}
         };
         mCallback.setText("Loading ");
-        mCallback.setWidth(10000);
-        mCallback.setHeight(10000);
+        Display display = getWindowManager().getDefaultDisplay();
+        mCallback.setWidth(display.getWidth());
+        mCallback.setHeight(display.getHeight());
         mCallback.setFocusableInTouchMode(true);
         
         mLayout.addView(mCallback);

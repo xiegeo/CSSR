@@ -95,8 +95,8 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
         // of stretching it.
         //final int width = resolveSize(getSuggestedMinimumWidth(), widthMeasureSpec);
         //final int height = resolveSize(getSuggestedMinimumHeight(), heightMeasureSpec);
-        final int width = resolveSize(1000, widthMeasureSpec);
-        final int height = resolveSize(1000, heightMeasureSpec);
+        final int width = resolveSize(100000, widthMeasureSpec);
+        final int height = resolveSize(100000, heightMeasureSpec);
     	
     	//Toast.makeText(Main.me, width+","+height, Toast.LENGTH_SHORT).show();
         setMeasuredDimension(width, height);
@@ -110,7 +110,11 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-    	Log.i(TAG, "onLayout mPreviewSize:"+mPreviewSize.width);
+    	if (mPreviewSize == null) {
+			Log.e(TAG, "onLayout:no preview size");
+		}else{
+			Log.i(TAG, "onLayout mPreviewSize:"+mPreviewSize.width);
+		}
         if (changed && getChildCount() > 0) {
             final View child = getChildAt(0);
 
@@ -158,9 +162,42 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
         }
     }
 
+    
+    // the higher the score the better
+    private double score(Size s, int w, double r){
+    	double score = 0;
+    	double xdif = (w - s.width)/(double) w;
+    	if (xdif < 0) {
+			//too big
+    		score --;
+		}
+    	score -= Math.abs(xdif);
+    	
+    	double rdif = (r - ((double)s.width/s.height))/r;
+    	
+    	score -= Math.abs(rdif * 2);
+    	Log.i(TAG, "Size:"+s+" score:"+score);
+    	return score;
+    }
 
     private Size getOptimalPreviewSize(List<Size> sizes, int w, int h) {
-        final double ASPECT_TOLERANCE = 0.1;
+    	Log.i(TAG, "w:"+w+" h:"+h+" sizes:"+sizes);
+    	if (sizes == null) return null;
+    	double r = (double) w / h;
+    	Size bestSize = null;
+    	double bestScore = Double.NEGATIVE_INFINITY;
+    	for (Size s : sizes) {
+			double score = score(s, w, r);
+			if (score > bestScore) {
+				bestScore = score;
+				bestSize = s;
+			}
+		}
+    	Log.i(TAG, "bestSize:"+bestSize);
+    	return bestSize;
+    	
+    	//old sample code
+        /*final double ASPECT_TOLERANCE = 0.1;
         double targetRatio = (double) w / h;
         if (sizes == null) return null;
 
@@ -189,7 +226,7 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
                 }
             }
         }
-        return optimalSize;
+        return optimalSize;*/
     }
 
 
