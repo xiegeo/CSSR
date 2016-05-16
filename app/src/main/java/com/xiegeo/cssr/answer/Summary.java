@@ -98,7 +98,7 @@ public class Summary {
 		}
 		
 		if (clearedTimer > now ) {
-			out.append("¡÷");
+			out.append("â–³");
 		}
 		
 		
